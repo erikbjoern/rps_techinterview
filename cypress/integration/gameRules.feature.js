@@ -8,6 +8,7 @@ describe('Game rules',  () => {
         cy.get('#leftChoice').type('1')
         //3 represents scissors
         cy.get('#rightChoice').type('3')
+        cy.get('#determineWinner').click()
         cy.get('#winner').should('contain', 'Left')
     })
     
@@ -16,6 +17,7 @@ describe('Game rules',  () => {
         cy.get('#leftChoice').type('2')
         //3 represents scissors
         cy.get('#rightChoice').type('3')
+        cy.get('#determineWinner').click()
         cy.get('#winner').should('contain', 'Right')
     })
     
@@ -24,6 +26,7 @@ describe('Game rules',  () => {
         cy.get('#leftChoice').type('2')
         //1 represents rock
         cy.get('#rightChoice').type('1')
+        cy.get('#determineWinner').click()
         cy.get('#winner').should('contain', 'Right')
     })
     
@@ -32,6 +35,7 @@ describe('Game rules',  () => {
         cy.get('#leftChoice').type('1')
         //1 represents rock
         cy.get('#rightChoice').type('1')
+        cy.get('#determineWinner').click()
         cy.get('#winner').should('contain', 'Tie')
     })
 })
