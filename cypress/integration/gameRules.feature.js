@@ -4,20 +4,34 @@ describe('Game rules',  () => {
     })
 
     it('Rock wins over Scissors', () => {
-        Left.picks('rock')
-        Right.picks('scissors')
+        //1 represents rock
+        cy.get('#leftChoice').type('1')
+        //3 represents scissors
+        cy.get('#rightChoice').type('3')
         cy.get('#winner').should('contain', 'Left')
     })
-
+    
     it('Scissors win over Paper', () => {
-        Left.pick('paper')
-        Right.picks('scissors')
+        //2 represents paper
+        cy.get('#leftChoice').type('2')
+        //3 represents scissors
+        cy.get('#rightChoice').type('3')
         cy.get('#winner').should('contain', 'Right')
     })
     
     it('Paper wins over Rock', () => {
-        Left.pick('paper')
-        Right.picks('rock')
-        cy.get('#winner').should('contain', 'Left')
+        //2 represents paper
+        cy.get('#leftChoice').type('2')
+        //1 represents rock
+        cy.get('#rightChoice').type('1')
+        cy.get('#winner').should('contain', 'Right')
+    })
+    
+    it('Identicals picks result in a tie', () => {
+        //1 represents rock
+        cy.get('#leftChoice').type('1')
+        //1 represents rock
+        cy.get('#rightChoice').type('1')
+        cy.get('#winner').should('contain', 'Tie')
     })
 })
