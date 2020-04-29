@@ -6,57 +6,19 @@ export const determineWinner = (leftChoice, rightChoice) => {
 }
   
   const compare = (leftChoice, rightChoice) => {
-    switch (leftChoice) {
-      //when leftChoice is rock
-      case 1:
-        //...and rightChoice is rock
-        if (rightChoice === 1) {
-          //tie 
-          return 'Tie'
-        }
-        //...and rightChoice is paper
-        else if (rightChoice === 2) {
-          //paper wins 
-          return 'Right'
-        }
-        //...and rightChoice is scissors 
-        else if (rightChoice === 3) {
-          //scissors win 
-          return 'Left'
-        }
-      //when leftChoice is paper
-      case 2:
-        //...and rightChoice is rock
-        if (rightChoice === 1) {
-          //paper wins 
-          return 'Left'
-        }
-        //...and rightChoice is paper
-        else if (rightChoice === 2) {
-          //tie 
-          return 'Tie'
-        }
-        //...and rightChoice is scissors 
-        else if (rightChoice === 3) {
-          //scissors win 
-          return 'Right'
-        }
-      //when leftChoice is scissors
-      case 3:
-        //...and rightChoice is rock
-        if (rightChoice === 1) {
-          //rock wins 
-          return 'Right'
-        }
-        //...and rightChoice is paper
-        else if (rightChoice === 2) {
-          //scissors win 
-          return 'Left'
-        }
-        //...and rightChoice is scissors 
-        else if (rightChoice === 3) {
-          //tie 
-          return 'Left'
-        }
+    if (leftChoice == rightChoice) {
+      return 'Tie'
+    } else if ((leftChoice == 1) && (rightChoice == 3)) {
+      return 'Left wins'
+    } else if ((leftChoice == 1) && (rightChoice == 2)) {
+      return 'Right wins'
+    } else if ((leftChoice == 2) && (rightChoice == 1)) {
+      return 'Left wins'
+    } else if ((leftChoice == 2) && (rightChoice == 3)) {
+      return 'Right wins'
+    } else if ((leftChoice == 3) && (rightChoice == 2)) {
+      return 'Left wins'
+    } else if ((leftChoice == 3) && (rightChoice == 1)) {
+      return 'Right wins'
     }
   }

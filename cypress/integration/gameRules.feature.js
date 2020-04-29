@@ -27,7 +27,7 @@ describe('Game rules',  () => {
         //1 represents rock
         cy.get('#rightChoice').type('1')
         cy.get('#determineWinner').click()
-        cy.get('#winner').should('contain', 'Right')
+        cy.get('#winner').should('contain', 'Left')
     })
     
     it('Identicals picks result in a tie', () => {
