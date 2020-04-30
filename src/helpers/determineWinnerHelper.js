@@ -8,17 +8,17 @@ export const determineWinner = (leftChoice, rightChoice) => {
   const compare = (leftChoice, rightChoice) => {
     if (leftChoice == rightChoice) {
       return 'Tie'
-    } else if ((leftChoice == 1) && (rightChoice == 3)) {
+    } else if ((leftChoice == "rock") && (rightChoice == "scissors")) {
       return 'Left wins'
-    } else if ((leftChoice == 1) && (rightChoice == 2)) {
+    } else if ((leftChoice == "rock") && (rightChoice == "paper")) {
       return 'Right wins'
-    } else if ((leftChoice == 2) && (rightChoice == 1)) {
+    } else if ((leftChoice == "paper") && (rightChoice == "rock")) {
       return 'Left wins'
-    } else if ((leftChoice == 2) && (rightChoice == 3)) {
+    } else if ((leftChoice == "paper") && (rightChoice == "scissors")) {
       return 'Right wins'
-    } else if ((leftChoice == 3) && (rightChoice == 2)) {
+    } else if ((leftChoice == "scissors") && (rightChoice == "paper")) {
       return 'Left wins'
-    } else if ((leftChoice == 3) && (rightChoice == 1)) {
+    } else if ((leftChoice == "scissors") && (rightChoice == "rock")) {
       return 'Right wins'
     }
   }
