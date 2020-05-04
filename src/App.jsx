@@ -45,22 +45,21 @@ class App extends Component {
     }
   }
 
-
-    render() {
-        return (
-            <div>
-                <PlayerChoices
-                  leftChoice={this.state.leftChoice}
-                  rightChoice={this.state.rightChoice}
-                  onChangeHandler={this.onChangeHandler}
-                  onSubmitHandler={this.onSubmitHandler}
-                />
-                <DisplayWinner
-                  winner={this.state.winner}
-                />
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <PlayerChoices
+          leftChoice={this.state.leftChoice}
+          rightChoice={this.state.rightChoice}
+          onChangeHandler={this.onChangeHandler}
+          onSubmitHandler={this.onSubmitHandler}
+        />
+        <DisplayWinner
+          winner={this.state.winner}
+        />
+      </div>
+    )
+  }
 }
 
 export default App
