@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PlayerPlaceholders from './components/PlayerPlaceholders'
+import DetermineWinner from './components/DetermineWinner'
 import DisplayWinner from './components/DisplayWinner'
 import { determineWinner } from './helpers/determineWinnerHelper'
 
@@ -48,10 +48,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <PlayerPlaceholders
-          leftChoice={this.state.leftChoice}
-          rightChoice={this.state.rightChoice}
-          onChangeHandler={this.onChangeHandler}
+        <DetermineWinner
           onSubmitHandler={this.onSubmitHandler}
         />
         <DisplayWinner
