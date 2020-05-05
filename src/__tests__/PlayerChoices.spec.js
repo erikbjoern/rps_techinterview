@@ -1,13 +1,13 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import PlayerChoices from '../components/PlayerChoices'
+import PlayerPlaceholders from '../components/PlayerPlaceholders'
 
-describe('PlayerChoices', () => {
+describe('PlayerPlaceholders', () => {
   const handleChange = jest.fn()
   const handleSubmit = jest.fn()
   const wrapper = shallow(
-    <PlayerChoices
+    <PlayerPlaceholders
       leftChoice='rock'
       rightChoice='paper'
       onChangeHandler={handleChange}
