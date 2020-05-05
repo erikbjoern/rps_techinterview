@@ -34,4 +34,9 @@ describe('PlayerChoices', () => {
     wrapper.find('form').simulate('submit')
     expect(handleSubmit).toHaveBeenCalled()
   })
+
+  // it('does not show text of player choices', () => {
+  //   wrapper.find('#leftChoice').simulate('keydown', {keyCode: 49})
+  //   expect(wrapper.find('#leftChoice').text()).toHaveLength(0)
+  // })
 })
