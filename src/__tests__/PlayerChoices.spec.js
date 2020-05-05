@@ -1,13 +1,13 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import PlayerChoices from '../components/PlayerChoices'
+import PlayerPlaceholders from '../components/PlayerPlaceholders'
 
-describe('PlayerChoices', () => {
+describe('PlayerPlaceholders', () => {
   const handleChange = jest.fn()
   const handleSubmit = jest.fn()
   const wrapper = shallow(
-    <PlayerChoices
+    <PlayerPlaceholders
       leftChoice='rock'
       rightChoice='paper'
       onChangeHandler={handleChange}
@@ -34,4 +34,9 @@ describe('PlayerChoices', () => {
     wrapper.find('form').simulate('submit')
     expect(handleSubmit).toHaveBeenCalled()
   })
+
+  // it('does not show text of player choices', () => {
+  //   wrapper.find('#leftChoice').simulate('keydown', {keyCode: 49})
+  //   expect(wrapper.find('#leftChoice').text()).toHaveLength(0)
+  // })
 })
