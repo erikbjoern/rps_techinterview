@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import DetermineWinner from './components/DetermineWinner'
 import DisplayWinner from './components/DisplayWinner'
 import { determineWinner } from './helpers/determineWinnerHelper'
 
@@ -10,16 +9,13 @@ class App extends Component {
     winner: ""
   }
 
-  onChangeHandler = e => this.setState({ [e.target.name]: e.target.value })
-
-  onSubmitHandler = e => {
-    e.preventDefault()
-    const winner = determineWinner(this.state.leftChoice, this.state.rightChoice)
-    this.setState({ winner: winner })
-  }
-
   componentDidMount(){
     document.addEventListener('keydown', this.onKeyDownHandler)
+
+    setInterval(() => {
+      const winner = determineWinner(this.state.leftChoice, this.state.rightChoice)
+      this.setState({ winner: winner })
+    }, 5000)
   }
 
   onKeyDownHandler = e => {
@@ -48,9 +44,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <DetermineWinner
-          onSubmitHandler={this.onSubmitHandler}
-        />
         <DisplayWinner
           winner={this.state.winner}
         />
