@@ -16,7 +16,6 @@ describe("Players cannot see", () => {
   it("Hidden 'rock' wins over hidden 'scissors'", () => {
     cy.get('body').trigger('keydown', {keyCode: 49})
     cy.get('body').trigger('keydown', {keyCode: 39})
-    cy.get('#determineWinner').click()
     cy.get('#winner').should('contain', 'Left wins')
   })
 

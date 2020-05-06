@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import DisplayWinner from './components/DisplayWinner'
+import Countdown from './components/Countdown'
 import { determineWinner } from './helpers/determineWinnerHelper'
 
 class App extends Component {
   state = {
     leftChoice: "",
     rightChoice: "",
-    winner: ""
+    weHaveAWinner: false,
+    winner: "",
+    countdown: 3
   }
 
   componentDidMount(){
@@ -14,8 +16,27 @@ class App extends Component {
 
     setInterval(() => {
       const winner = determineWinner(this.state.leftChoice, this.state.rightChoice)
-      this.setState({ winner: winner })
-    }, 5000)
+      const countdown = this.state.countdown
+
+      if (countdown > 1) {
+        this.setState(({countdown}) => ({
+          countdown: countdown - 1
+        }))
+      } else if (countdown === 1) {
+        this.setState(({countdown}) => ({ 
+          weHaveAWinner: true,
+          winner: winner,
+          leftChoice: "",
+          rightChoice: "",
+          countdown: countdown - 1
+         }))
+      } else {
+        this.setState({ 
+          countdown: 3,
+          weHaveAWinner: false
+        })
+      }
+    }, 1000)
   }
 
   onKeyDownHandler = e => {
@@ -42,11 +63,15 @@ class App extends Component {
   }
 
   render() {
+    let renderWinner
+    if (this.state.weHaveAWinner === true) {
+      renderWinner = <p id="winner">{this.state.winner}</p>
+    }
+
     return (
       <div>
-        <DisplayWinner
-          winner={this.state.winner}
-        />
+        <Countdown countdown={this.state.countdown}/>
+        {renderWinner}
       </div>
     )
   }

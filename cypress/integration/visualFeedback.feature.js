@@ -3,13 +3,21 @@ describe('Players should see', () => {
     cy.visit('/')
   })
 
-  it('a button to start the game set', () => {
-    cy.get('#start-game').should('contain', 'Start!')
-  })
+  // it('a button to start the game timer', () => {
+  //   cy.get('#start-game').should('contain', 'Start!')
+  // })
 
   it('a timer countdown', () => {
-    cy.get('#start-game').click()
+    // cy.get('#start-game').click()
     cy.get('#countdown').should('be.visible')
+  })
+
+  it('the timer ticking', () => {
+    cy.get('#countdown').should('contain', 'rock')
+    cy.wait(1000)
+    cy.get('#countdown').should('contain', 'paper')
+    cy.wait(1000)
+    cy.get('#countdown').should('contain', 'scissors')
   })
 
   it("left player's choice after countdown", () => {
