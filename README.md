@@ -6,6 +6,14 @@
 * Player hotkeys are implemented
 * Timer on interval is implemented
 
+**Plan for improvements next in line:**
+* Players choices should be reset when winner is determined
+* Players should see a visual representation of the timer
+* Player hotkeys should be visible on the screen
+* Players should be able to start the timer when they want to
+* Players should accumulate points for each victory
+* There should be a score limit at which the timer stops and a final winner is determined
+
 **1. The Game rules**
 ```
 As a user
