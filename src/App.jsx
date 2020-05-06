@@ -1,6 +1,14 @@
 import React, { Component } from 'react'
 import Countdown from './components/Countdown'
 import { determineWinner } from './helpers/determineWinnerHelper'
+import rightRock from './images/right-rock.png'
+import rightPaper from './images/right-paper.png'
+import rightScissors from './images/right-scissors.png'
+import leftRock from './images/left-rock.png'
+import leftPaper from './images/left-paper.png'
+import leftScissors from './images/left-scissors.png'
+import { Container, Image } from 'semantic-ui-react'
+
 
 class App extends Component {
   state = {
@@ -69,14 +77,32 @@ class App extends Component {
     let startButton
     let leftPlayer
     let rightPlayer
+    let leftPlayerChoice
+    let rightPlayerChoice
+
+    if (this.state.leftChoice === 'rock') {
+      leftPlayerChoice = <Image size='tiny' src={leftRock}/>
+    } else if (this.state.leftChoice === 'paper') {
+      leftPlayerChoice = <Image size='tiny' src={leftPaper}/>
+    } else if (this.state.leftChoice === 'scissors') {
+      leftPlayerChoice = <Image size='tiny' src={leftScissors}/>
+    }
+    
+    if (this.state.rightChoice === 'rock') {
+      rightPlayerChoice = <Image size='tiny' src={rightRock}/>
+    } else if (this.state.rightChoice === 'paper') {
+      rightPlayerChoice = <Image size='tiny' src={rightPaper}/>
+    } else if (this.state.rightChoice === 'scissors') {
+      rightPlayerChoice = <Image size='tiny' src={rightScissors}/>
+    }
 
     if (this.state.weHaveAWinner === true) {
       renderWinner = <p id="winner">{this.state.winner}</p>
-      leftPlayer = <p id="leftPlayerChoice">{this.state.leftChoice}</p>
-      rightPlayer = <p id="rightPlayerChoice">{this.state.rightChoice}</p>
+      leftPlayer   = leftPlayerChoice
+      rightPlayer  = rightPlayerChoice
     } else {
-      leftPlayer = <i id="leftPlayer" class="em em-right-facing_fist" aria-role="presentation" aria-label="RIGHT-FACING FIST"></i>
-      rightPlayer = <i id="rightPlayer" class="em em-left-facing_fist" aria-role="presentation" aria-label="LEFT-FACING FIST"></i>
+      leftPlayer   = <Image size='tiny' src={leftRock}/>
+      rightPlayer  = <Image size='tiny' src={rightRock}/>
     }
 
     if (this.state.countdown === 4) {
@@ -84,13 +110,13 @@ class App extends Component {
     }
 
     return (
-      <div>
+      <Container>
         {startButton}
         <Countdown countdown={this.state.countdown}/>
         {renderWinner}
         {leftPlayer}
         {rightPlayer}
-      </div>
+      </Container>
     )
   }
 }
