@@ -28,14 +28,14 @@ class App extends Component {
         this.setState(({countdown}) => ({ 
           weHaveAWinner: true,
           winner: winner,
-          leftChoice: "",
-          rightChoice: "",
           countdown: countdown - 1
          }))
       } else {
         this.setState({ 
           countdown: 3,
-          weHaveAWinner: false
+          weHaveAWinner: false,
+          leftChoice: "",
+          rightChoice: ""
         })
       }
     }, 1000)
@@ -67,10 +67,18 @@ class App extends Component {
   render() {
     let renderWinner
     let startButton
+    let leftPlayer
+    let rightPlayer
 
     if (this.state.weHaveAWinner === true) {
       renderWinner = <p id="winner">{this.state.winner}</p>
+      leftPlayer = <p id="leftPlayerChoice">{this.state.leftChoice}</p>
+      rightPlayer = <p id="rightPlayerChoice">{this.state.rightChoice}</p>
+    } else {
+      leftPlayer = <i id="leftPlayer" class="em em-right-facing_fist" aria-role="presentation" aria-label="RIGHT-FACING FIST"></i>
+      rightPlayer = <i id="rightPlayer" class="em em-left-facing_fist" aria-role="presentation" aria-label="LEFT-FACING FIST"></i>
     }
+
     if (this.state.countdown === 4) {
       startButton = <button id="start-game" onClick={this.startGame}>Start!</button>
     }
@@ -80,8 +88,8 @@ class App extends Component {
         {startButton}
         <Countdown countdown={this.state.countdown}/>
         {renderWinner}
-        <i id="leftPlayer" class="em em-right-facing_fist" aria-role="presentation" aria-label="RIGHT-FACING FIST"></i>
-        <i id="rightPlayer" class="em em-left-facing_fist" aria-role="presentation" aria-label="LEFT-FACING FIST"></i>
+        {leftPlayer}
+        {rightPlayer}
       </div>
     )
   }

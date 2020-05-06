@@ -33,7 +33,6 @@ describe('Players should see', () => {
     cy.get('#start-game').click()
     cy.get('body').trigger('keydown', { keyCode: 49 })
     cy.get('body').trigger('keydown', { keyCode: 39 })
-    cy.wait(5500)
     cy.get('#leftPlayerChoice').should('be.visible')
   })
 
@@ -41,7 +40,6 @@ describe('Players should see', () => {
     cy.get('#start-game').click()
     cy.get('body').trigger('keydown', { keyCode: 49 })
     cy.get('body').trigger('keydown', { keyCode: 39 })
-    cy.wait(5500)
     cy.get('#rightPlayerChoice').should('be.visible')
   })
   
@@ -49,7 +47,6 @@ describe('Players should see', () => {
     cy.get('#start-game').click()
     cy.get('body').trigger('keydown', { keyCode: 49 })
     cy.get('body').trigger('keydown', { keyCode: 39 })
-    cy.wait(5500)
     cy.get('#winner').should('contain', 'Right player wins')
   })
   
