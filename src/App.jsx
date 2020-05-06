@@ -8,12 +8,14 @@ class App extends Component {
     rightChoice: "",
     weHaveAWinner: false,
     winner: "",
-    countdown: 3
+    countdown: 4
   }
 
   componentDidMount(){
     document.addEventListener('keydown', this.onKeyDownHandler)
+  }
 
+  startGame = () => {
     setInterval(() => {
       const winner = determineWinner(this.state.leftChoice, this.state.rightChoice)
       const countdown = this.state.countdown
@@ -64,12 +66,18 @@ class App extends Component {
 
   render() {
     let renderWinner
+    let startButton
+
     if (this.state.weHaveAWinner === true) {
       renderWinner = <p id="winner">{this.state.winner}</p>
+    }
+    if (this.state.countdown === 4) {
+      startButton = <button id="start-game" onClick={this.startGame}>Start!</button>
     }
 
     return (
       <div>
+        {startButton}
         <Countdown countdown={this.state.countdown}/>
         {renderWinner}
       </div>
