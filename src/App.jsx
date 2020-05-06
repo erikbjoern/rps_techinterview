@@ -80,6 +80,8 @@ class App extends Component {
         {startButton}
         <Countdown countdown={this.state.countdown}/>
         {renderWinner}
+        <i id="leftPlayer" class="em em-right-facing_fist" aria-role="presentation" aria-label="RIGHT-FACING FIST"></i>
+        <i id="rightPlayer" class="em em-left-facing_fist" aria-role="presentation" aria-label="LEFT-FACING FIST"></i>
       </div>
     )
   }
