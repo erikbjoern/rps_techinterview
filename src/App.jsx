@@ -7,7 +7,7 @@ import rightScissors from './images/right-scissors.png'
 import leftRock from './images/left-rock.png'
 import leftPaper from './images/left-paper.png'
 import leftScissors from './images/left-scissors.png'
-import { Container, Image } from 'semantic-ui-react'
+import { Container, Image, Header } from 'semantic-ui-react'
 
 
 class App extends Component {
@@ -97,7 +97,7 @@ class App extends Component {
     }
 
     if (this.state.weHaveAWinner === true) {
-      renderWinner = <p id="winner">{this.state.winner}</p>
+      renderWinner = <Header as="h1" id="winner">{this.state.winner}</Header>
       leftPlayer   = leftPlayerChoice
       rightPlayer  = rightPlayerChoice
     } else {
@@ -110,12 +110,14 @@ class App extends Component {
     }
 
     return (
-      <Container>
+      <Container align="center" style={{paddingTop: '10%'}}>
         {startButton}
         <Countdown countdown={this.state.countdown}/>
         {renderWinner}
-        {leftPlayer}
-        {rightPlayer}
+        <Container style={{display: 'flex', justifyContent: 'space-evenly'}}>
+            {leftPlayer}
+            {rightPlayer}
+        </Container>
       </Container>
     )
   }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Header } from 'semantic-ui-react'
 
 const Countdown = ({countdown}) => {
 
@@ -19,7 +20,7 @@ const Countdown = ({countdown}) => {
   }
   
   return (
-      <h1 id="countdown">{countdownInText}</h1>
+      <Header as="h1" id="countdown">{countdownInText}</Header>
   )
 }
 
