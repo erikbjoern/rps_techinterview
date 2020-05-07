@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Container, Image, Header, Button, Grid } from 'semantic-ui-react'
 
 import Countdown from './components/Countdown'
+import HotkeysSheet from './components/HotkeysSheet'
 import { determineWinner } from './helpers/determineWinnerHelper'
 import rightRock from './images/right-rock.png'
 import rightPaper from './images/right-paper.png'
@@ -140,13 +141,13 @@ class App extends Component {
 
     return (
       <Container align="center">
-        <Header as="h3" id="score-limit" style={{paddingTop: "40px", color: "#cdffcd"}}>First to 10 wins!</Header>
-        <Container style={{height: "100px", paddingTop: '6%'}}>
+        <Header as="h3" id="score-limit" style={{paddingTop: "30px", color: "#cdffcd"}}>First to 10 wins!</Header>
+        <Container style={{height: "100px", paddingTop: '5%'}}>
           {startButton}
           <Countdown countdown={this.state.countdown}/>
           {renderWinner}  
         </Container>
-        <Container style={{display: 'flex', justifyContent: 'space-evenly', paddingTop: '10%', marginBottom: '10%'}}>
+        <Container style={{display: 'flex', justifyContent: 'space-evenly', paddingTop: '8%', marginBottom: '5%'}}>
             {leftPlayer}
             {rightPlayer}
         </Container>
@@ -156,6 +157,7 @@ class App extends Component {
           <Header className="score" as="h1" id="rightPlayerScore">{rightPlayerScore}</Header> 
           </Grid.Row>
         </Grid>
+        <HotkeysSheet />
       </Container>
     )
   }
