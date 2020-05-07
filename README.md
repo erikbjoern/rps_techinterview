@@ -1,10 +1,18 @@
 # [WIP] Rock, Paper, Scissors game
 
+[Deployed App on Netlify](https://erikbjoern-rock-paper-scissors.netlify.app/)
+
+A web app where two local players can play 'Rock, paper, scissors' against eachother, each using a set of keys on the same keyboard. Their choices have to be made before the countdown is over, and are then displayed, represented by two hands. There's a set score limit of 10 points. Whoever reaches that score is determined the final winner.
+
+
 * Project scaffolded with create-react-app
 * Cypress installed for feature tests
-* Game rules are implemented
-* Player hotkeys are implemented
-* Timer on interval is implemented
+* Game rules (game logic) are implemented
+* Player input through hotkeys is implemented
+* Timer is implemented
+* Manual game start is implemented
+* Accumulation of points is implemented
+* Game stopping on reached score limit is implemented
 * Following visuals are implemented:
   * Players can see:
     * a visual representation of the timer, ticking
@@ -19,11 +27,15 @@
     * nice colors, fonts, and images!
 
 ## Plan for improvements next in line:
-* Players choices should be reset when winner is determined
-* Player hotkeys should be visible on the screen
-* Players should be able to start the timer when they want to
-* Players should accumulate points for each victory
-* There should be a score limit at which the timer stops and a final winner is determined
+* Refactor code, mainly in App.jsx
+* Solve issue with starting timer again after a complete game set
+
+## For possible future development
+* Display amount of sets won for each player
+* Animated timer and player representations
+* Possibility to play against CPU with random choices
+* Possibility to set custom score limit, timer and hotkeys
+* Possibility to play against other player online
 
 ## User Stories
 ### 1. The Game rules
@@ -40,7 +52,6 @@ I want 'paper' to win over 'rock'
 In order to play a game of 'rock paper scissors' against another person
 I want the application to allow for two local players playing against each other
 
-As a player
 In order not to give away my choice of 'rock', 'paper' or 'scissors' by typing or using the mouse
 I want to be able to make my choice by using a single key for each choice
 ```
