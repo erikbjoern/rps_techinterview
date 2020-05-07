@@ -74,6 +74,6 @@ describe('Players should see', () => {
   })
 
   it('the hotkeys to use', () => {
-    cy.get('#hotkeys').should('be.visible')
+    cy.get('.hotkeys').should('be.visible')
   })
 })

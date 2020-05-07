@@ -29,6 +29,7 @@
 .background {
   background-color: #87a658;
   height: 100%;
+  overflow: hidden;
 }
 
 .ui.grid>.row {
@@ -38,4 +39,10 @@
 
 .ui.grid>.row>.column {
   text-align: center !important;
+}
+
+.hotkeysSheet {
+  bottom: 50px !important;
+  color: #cdffcd; 
+  padding-top: 50px;
 }

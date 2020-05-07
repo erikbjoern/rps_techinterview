@@ -3,7 +3,7 @@ import {Grid, Header} from 'semantic-ui-react'
 
 const HotkeysSheet = () => {
   return (
-    <Grid  centered id="hotkeys" style={{color: "#cdffcd", paddingTop: "50px"}}>
+    <Grid className="hotkeysSheet" centered>
       <Grid.Row><Header as="h2" style={{color: "#cdffcd"}}>Hotkeys</Header></Grid.Row>
       <Grid.Row className="gridRows">
         <Grid.Column  width={4}><Header as="h4" style={{color: "#cdffcd"}}>Left player</Header></Grid.Column>
