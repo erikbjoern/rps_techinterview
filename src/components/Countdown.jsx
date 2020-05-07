@@ -20,7 +20,7 @@ const Countdown = ({countdown}) => {
   }
   
   return (
-      <Header as="h1" id="countdown">{countdownInText}</Header>
+      <Header className="text" as="h1" id="countdown">{countdownInText}</Header>
   )
 }
 

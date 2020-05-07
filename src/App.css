@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Bangers';
+  src: local('Bangers'), url(./fonts/Bangers-Regular.ttf) format('truetype');
+}
+
+.text {  
+  font-family: 'Bangers', cursive !important;
+  font-size: 300% !important;
+  letter-spacing: 0.3rem;
+}
+
+.button {
+  font-family: 'Bangers', cursive !important;
+  font-size: 200% !important;
+  padding: 15px !important;
+  border: 2px solid #cc9c49 !important;
+  background-color: #f1d969 !important;
+}
+
+.background {
+  background-color: #87a658;
+  height: 100%;
+}

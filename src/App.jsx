@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Container, Image, Header, Button } from 'semantic-ui-react'
+
 import Countdown from './components/Countdown'
 import { determineWinner } from './helpers/determineWinnerHelper'
 import rightRock from './images/right-rock.png'
@@ -7,7 +9,6 @@ import rightScissors from './images/right-scissors.png'
 import leftRock from './images/left-rock.png'
 import leftPaper from './images/left-paper.png'
 import leftScissors from './images/left-scissors.png'
-import { Container, Image, Header } from 'semantic-ui-react'
 
 
 class App extends Component {
@@ -28,17 +29,17 @@ class App extends Component {
       const winner = determineWinner(this.state.leftChoice, this.state.rightChoice)
       const countdown = this.state.countdown
 
-      if (countdown > 1) {
+      if (countdown >= 2) {
         this.setState(({countdown}) => ({
           countdown: countdown - 1
         }))
-      } else if (countdown === 1) {
+      } else if (countdown < 2 && countdown >= 0) {
         this.setState(({countdown}) => ({ 
           weHaveAWinner: true,
           winner: winner,
           countdown: countdown - 1
          }))
-      } else {
+      } else if (countdown < 0) {
         this.setState({ 
           countdown: 3,
           weHaveAWinner: false,
@@ -50,7 +51,7 @@ class App extends Component {
   }
 
   onKeyDownHandler = e => {
-    if(this.state.countdown > 1) {
+    if(this.state.countdown > 0) {
       switch (e.keyCode) {
         case 49:
           this.setState({ leftChoice: "rock" })
@@ -83,48 +84,50 @@ class App extends Component {
     let rightPlayerChoice
 
     if (this.state.leftChoice === 'rock') {
-      leftPlayerChoice = <Image size='tiny' src={leftRock}/>
+      leftPlayerChoice = <Image size='small' src={leftRock}/>
     } else if (this.state.leftChoice === 'paper') {
-      leftPlayerChoice = <Image size='tiny' src={leftPaper}/>
+      leftPlayerChoice = <Image size='small' src={leftPaper}/>
     } else if (this.state.leftChoice === 'scissors') {
-      leftPlayerChoice = <Image size='tiny' src={leftScissors}/>
+      leftPlayerChoice = <Image size='small' src={leftScissors}/>
     }
     
     if (this.state.rightChoice === 'rock') {
-      rightPlayerChoice = <Image size='tiny' src={rightRock}/>
+      rightPlayerChoice = <Image size='small' src={rightRock}/>
     } else if (this.state.rightChoice === 'paper') {
-      rightPlayerChoice = <Image size='tiny' src={rightPaper}/>
+      rightPlayerChoice = <Image size='small' src={rightPaper}/>
     } else if (this.state.rightChoice === 'scissors') {
-      rightPlayerChoice = <Image size='tiny' src={rightScissors}/>
+      rightPlayerChoice = <Image size='small' src={rightScissors}/>
     }
 
     if (this.state.weHaveAWinner === true) {
-      renderWinner = <Header as="h1" id="winner">{this.state.winner}</Header>
+      renderWinner = <Header className="text" as="h1" id="winner">{this.state.winner}!</Header>
       if (leftPlayerChoice) {
         leftPlayer = leftPlayerChoice
       } else {
-        leftPlayer = <Image size='tiny' src={leftRock}/>
+        leftPlayer = <Image size='small' src={leftRock}/>
       }
       if (rightPlayerChoice) {
         rightPlayer = rightPlayerChoice
       } else {
-        rightPlayer = <Image size='tiny' src={rightRock}/>
+        rightPlayer = <Image size='small' src={rightRock}/>
       }
     } else {
-      leftPlayer   = <Image size='tiny' src={leftRock}/>
-      rightPlayer  = <Image size='tiny' src={rightRock}/>
+      leftPlayer   = <Image size='small' src={leftRock}/>
+      rightPlayer  = <Image size='small' src={rightRock}/>
     }
 
     if (this.state.countdown === 4) {
-      startButton = <button id="start-game" onClick={this.startGame}>Start!</button>
+      startButton = <Button id="start-game" className='Button' onClick={this.startGame}>Start!</Button>
     }
 
     return (
-      <Container align="center" style={{paddingTop: '10%'}}>
-        {startButton}
-        <Countdown countdown={this.state.countdown}/>
-        {renderWinner}
-        <Container style={{display: 'flex', justifyContent: 'space-evenly'}}>
+      <Container align="center">
+        <Container style={{height: "100px", paddingTop: '10%'}}>
+          {startButton}
+          <Countdown countdown={this.state.countdown}/>
+          {renderWinner}  
+        </Container>
+        <Container style={{display: 'flex', justifyContent: 'space-evenly', paddingTop: '10%'}}>
             {leftPlayer}
             {rightPlayer}
         </Container>
