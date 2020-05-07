@@ -33,6 +33,7 @@ describe('Players should see', () => {
     cy.get('#start-game').click()
     cy.get('body').trigger('keydown', { keyCode: 49 })
     cy.get('body').trigger('keydown', { keyCode: 39 })
+    cy.wait(4000)
     cy.get('#leftPlayerChoice').should('be.visible')
   })
 
@@ -40,6 +41,7 @@ describe('Players should see', () => {
     cy.get('#start-game').click()
     cy.get('body').trigger('keydown', { keyCode: 49 })
     cy.get('body').trigger('keydown', { keyCode: 39 })
+    cy.wait(4000)
     cy.get('#rightPlayerChoice').should('be.visible')
   })
   
@@ -47,7 +49,8 @@ describe('Players should see', () => {
     cy.get('#start-game').click()
     cy.get('body').trigger('keydown', { keyCode: 49 })
     cy.get('body').trigger('keydown', { keyCode: 39 })
-    cy.get('#winner').should('contain', 'Right player wins')
+    cy.wait(4000)
+    cy.get('#winner').should('contain', 'Left player wins')
   })
   
   it("left player's score", () => {
@@ -56,6 +59,18 @@ describe('Players should see', () => {
   
   it("right player's score", () => {
     cy.get('#rightPlayerScore').should('contain', '0')
+  })
+
+  it("winner's score increase", () => {
+    cy.get('#start-game').click()
+    cy.get('body').trigger('keydown', { keyCode: 49 })
+    cy.get('body').trigger('keydown', { keyCode: 39 })
+    cy.wait(5000)
+    cy.get('#leftPlayerScore').should('contain', '1')
+  })
+
+  it('the score limit', () => {
+    cy.get('#score-limit').should('contain', 'First to 10 wins!')
   })
 
   it('the hotkeys to use', () => {

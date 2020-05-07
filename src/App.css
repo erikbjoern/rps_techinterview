@@ -6,7 +6,16 @@
 .text {  
   font-family: 'Bangers', cursive !important;
   font-size: 300% !important;
+  color: #12240a;
   letter-spacing: 0.3rem;
+}
+
+.score {  
+  font-family: 'Bangers' !important;
+  font-size: 500% !important;
+  letter-spacing: 0.3rem;
+  color: #f1d969 !important;
+  margin-top: 0 !important;
 }
 
 .button {
@@ -20,4 +29,13 @@
 .background {
   background-color: #87a658;
   height: 100%;
+}
+
+.ui.grid>.row {
+  padding-top: 0 !important; 
+  padding-bottom: 0 !important;
+}
+
+.ui.grid>.row>.column {
+  text-align: center !important;
 }
