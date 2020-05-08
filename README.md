@@ -13,6 +13,7 @@ A web app where two local players can play 'Rock, paper, scissors' against eacho
 * Manual game start is implemented
 * Accumulation of points is implemented
 * Game stopping on reached score limit is implemented
+* Game restart after a set is implemented 
 * Following visuals are implemented:
   * Players can see:
     * a visual representation of the timer, ticking
@@ -33,7 +34,6 @@ A web app where two local players can play 'Rock, paper, scissors' against eacho
 
 ## Plan for improvements next in line:
 * Refactor code, mainly extract helpers and components out of App.jsx
-* Solve issue with starting timer again after a complete game set
 
 ## For possible future development
 * Display amount of sets won for each player
