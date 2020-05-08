@@ -1,4 +1,4 @@
-# [WIP] Rock, Paper, Scissors game
+# Rock, Paper, Scissors game
 
 [Deployed App on Netlify](https://erikbjoern-rock-paper-scissors.netlify.app/)
 
