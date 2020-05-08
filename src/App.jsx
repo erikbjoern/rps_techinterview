@@ -59,7 +59,7 @@ class App extends Component {
         leftChoice: "",
         rightChoice: ""
       })
-      this.handleWinner()
+      this.determineFinalWinner()
     }
   }, 1000)
 
@@ -101,7 +101,7 @@ class App extends Component {
     }
   }
   
-  handleWinner = () => {
+  determineFinalWinner = () => {
     const leftPlayerScore  = this.state.leftPlayerScore
     const rightPlayerScore = this.state.rightPlayerScore
 
@@ -124,14 +124,7 @@ class App extends Component {
   }
 
   render() {
-    let renderWinner
-    let startButton
-    let leftPlayer
-    let rightPlayer
-    let leftPlayerChoice
-    let rightPlayerChoice
-    let leftPlayerScore  = this.state.leftPlayerScore
-    let rightPlayerScore = this.state.rightPlayerScore
+    let renderWinner, startButton, leftPlayer, rightPlayer, leftPlayerChoice, rightPlayerChoice
 
     if (this.state.leftChoice === 'rock') {
       leftPlayerChoice = <Image id="leftPlayerChoice" size='small' src={leftRock}/>
@@ -187,10 +180,10 @@ class App extends Component {
         <Grid fluid>
           <Grid.Row className="playerContainer">
           <Header className="score" as="h1" id="leftPlayerScore">
-            {leftPlayerScore}
+            {this.state.leftPlayerScore}
           </Header> 
           <Header className="score" as="h1" id="rightPlayerScore">
-            {rightPlayerScore}
+            {this.state.rightPlayerScore}
           </Header> 
           </Grid.Row>
         </Grid>
