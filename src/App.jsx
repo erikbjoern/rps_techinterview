@@ -84,8 +84,7 @@ class App extends Component {
         case 39:
           this.setState({ rightChoice: "scissors" })
           break
-        default:
-          break
+        default: break
       }
     }
   }
