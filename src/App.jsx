@@ -27,6 +27,16 @@ class App extends Component {
     document.addEventListener('keydown', this.onKeyDownHandler)
   }
 
+  startGame = () => {
+    this.setState({
+      countdown: 4,
+      weHaveAWinner: false,
+      leftPlayerScore: 0,
+      rightPlayerScore: 0
+    })
+    return this.gameOn
+  }
+
   gameOn = setInterval(() => {
     const winner = determineWinner(this.state.leftChoice, this.state.rightChoice)
     const countdown = this.state.countdown
@@ -49,21 +59,9 @@ class App extends Component {
         leftChoice: "",
         rightChoice: ""
       })
-      this.handleWinner()
+      this.determineFinalWinner()
     }
   }, 1000)
-
-  startGame = () => {
-    this.setState({
-      countdown: 4,
-      weHaveAWinner: false,
-      leftPlayerScore: 0,
-      rightPlayerScore: 0
-    })
-
-    return this.gameOn
-
-  }
 
   onKeyDownHandler = e => {
     if(this.state.countdown > 0) {
@@ -103,8 +101,8 @@ class App extends Component {
     }
   }
   
-  handleWinner = () => {
-    const leftPlayerScore = this.state.leftPlayerScore
+  determineFinalWinner = () => {
+    const leftPlayerScore  = this.state.leftPlayerScore
     const rightPlayerScore = this.state.rightPlayerScore
 
     if (rightPlayerScore === 10) {
@@ -126,14 +124,7 @@ class App extends Component {
   }
 
   render() {
-    let renderWinner
-    let startButton
-    let leftPlayer
-    let rightPlayer
-    let leftPlayerChoice
-    let rightPlayerChoice
-    let leftPlayerScore  = this.state.leftPlayerScore
-    let rightPlayerScore = this.state.rightPlayerScore
+    let renderWinner, startButton, leftPlayer, rightPlayer, leftPlayerChoice, rightPlayerChoice
 
     if (this.state.leftChoice === 'rock') {
       leftPlayerChoice = <Image id="leftPlayerChoice" size='small' src={leftRock}/>
@@ -152,7 +143,7 @@ class App extends Component {
     }
 
     if (this.state.weHaveAWinner === true) {
-      renderWinner = <Header className="text" as="h1" id="winner" style={{position: "absolute", margin: "0, auto", left: "0", right: "0", top: "150px"}}>{this.state.winner}!</Header>
+      renderWinner = <Header className="winnerText" as="h1" id="winner">{this.state.winner}!</Header>
       if (leftPlayerChoice) {
         leftPlayer = leftPlayerChoice
       } else {
@@ -174,20 +165,26 @@ class App extends Component {
 
     return (
       <Container align="center">
-        <Header as="h3" id="score-limit" style={{paddingTop: "30px", color: "#cdffcd"}}>First to 10 wins!</Header>
+        <Header as="h3" id="score-limit" style={{paddingTop: "30px", color: "#cdffcd"}}>
+          First to 10 wins!
+        </Header>
         <Container style={{height: "90px", paddingTop: '2%'}}>
           {startButton}
           <Countdown countdown={this.state.countdown}/>
         </Container>
           {renderWinner}
-        <Container style={{display: 'flex', justifyContent: 'space-evenly', paddingTop: '15%', marginBottom: '4%'}}>
-            {leftPlayer}
-            {rightPlayer}
+        <Container className="playerContainer" style={{paddingTop: "15%"}}>
+          {leftPlayer}
+          {rightPlayer}
         </Container>
         <Grid fluid>
-          <Grid.Row style={{display: 'flex', justifyContent: 'space-evenly'}}>
-          <Header className="score" as="h1" id="leftPlayerScore">{leftPlayerScore}</Header> 
-          <Header className="score" as="h1" id="rightPlayerScore">{rightPlayerScore}</Header> 
+          <Grid.Row className="playerContainer">
+          <Header className="score" as="h1" id="leftPlayerScore">
+            {this.state.leftPlayerScore}
+          </Header> 
+          <Header className="score" as="h1" id="rightPlayerScore">
+            {this.state.rightPlayerScore}
+          </Header> 
           </Grid.Row>
         </Grid>
         <HotkeysSheet/>
