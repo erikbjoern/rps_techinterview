@@ -32,7 +32,7 @@ A web app where two local players can play 'Rock, paper, scissors' against eacho
 * Semantic-ui-css and semantic-ui-react for styling
 
 ## Plan for improvements next in line:
-* Refactor code, mainly in App.jsx
+* Refactor code, mainly extract helpers and components out of App.jsx
 * Solve issue with starting timer again after a complete game set
 
 ## For possible future development
