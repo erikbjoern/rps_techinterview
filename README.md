@@ -34,6 +34,9 @@ A web app where two local players can play 'Rock, paper, scissors' against eacho
 
 ## Plan for improvements next in line:
 * Refactor code, mainly extract helpers and components out of App.jsx
+* It shouldn't say 'Tie' if no players makes any choice
+* Player not making a choice should loose if the other player makes a choice
+* Player loosing because of not choosing should have a fitting visual representation
 
 ## For possible future development
 * Display amount of sets won for each player
