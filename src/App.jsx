@@ -25,43 +25,43 @@ class App extends Component {
 
   componentDidMount(){
     document.addEventListener('keydown', this.onKeyDownHandler)
+
+    setInterval(() => {
+      const winner = determineWinner(this.state.leftChoice, this.state.rightChoice)
+      const countdown = this.state.countdown
+  
+      if (countdown >= 2 && countdown < 5) {
+        this.setState(({countdown}) => ({
+          countdown: countdown - 1
+        }))
+      } else if (countdown < 2 && countdown >= 0) {
+        this.setState(({countdown}) => ({ 
+          weHaveAWinner: true,
+          winner: winner,
+          countdown: countdown - 1
+        }))
+      } else if (countdown < 0) {
+        this.handleScore()
+        this.setState({ 
+          countdown: 3,
+          weHaveAWinner: false,
+          leftChoice: "",
+          rightChoice: ""
+        })
+        this.determineFinalWinner()
+      }
+    }, 1000)
   }
 
   startGame = () => {
     this.setState({
       countdown: 4,
       weHaveAWinner: false,
+      winner: "",
       leftPlayerScore: 0,
       rightPlayerScore: 0
     })
-    return this.gameOn
   }
-
-  gameOn = setInterval(() => {
-    const winner = determineWinner(this.state.leftChoice, this.state.rightChoice)
-    const countdown = this.state.countdown
-
-    if (countdown >= 2 && countdown < 5) {
-      this.setState(({countdown}) => ({
-        countdown: countdown - 1
-      }))
-    } else if (countdown < 2 && countdown >= 0) {
-      this.setState(({countdown}) => ({ 
-        weHaveAWinner: true,
-        winner: winner,
-        countdown: countdown - 1
-      }))
-    } else if (countdown < 0) {
-      this.handleScore()
-      this.setState({ 
-        countdown: 3,
-        weHaveAWinner: false,
-        leftChoice: "",
-        rightChoice: ""
-      })
-      this.determineFinalWinner()
-    }
-  }, 1000)
 
   onKeyDownHandler = e => {
     if(this.state.countdown > 0) {
@@ -84,14 +84,16 @@ class App extends Component {
         case 39:
           this.setState({ rightChoice: "scissors" })
           break
+        default:
+          break
       }
     }
   }
 
   handleScore = () => {
-    const winner = this.state.winner 
-    const leftPlayerScore = this.state.leftPlayerScore
-    const rightPlayerScore = this.state.rightPlayerScore
+    const winner           = this.state.winner, 
+          leftPlayerScore  = this.state.leftPlayerScore, 
+          rightPlayerScore = this.state.rightPlayerScore
 
     if (winner === 'Left player wins') {
       this.setState({ leftPlayerScore: leftPlayerScore + 1 })
@@ -102,24 +104,19 @@ class App extends Component {
   }
   
   determineFinalWinner = () => {
-    const leftPlayerScore  = this.state.leftPlayerScore
-    const rightPlayerScore = this.state.rightPlayerScore
-
-    if (rightPlayerScore === 10) {
+    if (this.state.rightPlayerScore === 10) {
       this.setState({ 
         countdown: 5,
         weHaveAWinner: true,
         winner: 'Right player wins it all'
       })
-      clearInterval(this.gameOn)
     }
-    if (leftPlayerScore === 10) {
+    if (this.state.leftPlayerScore === 10) {
       this.setState({ 
         countdown: 5,
         weHaveAWinner: true,
         winner: 'Left player wins it all'
       })
-      clearInterval(this.gameOn)
     }
   }
 
