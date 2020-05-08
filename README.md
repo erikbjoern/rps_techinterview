@@ -25,6 +25,11 @@ A web app where two local players can play 'Rock, paper, scissors' against eacho
     * the final winner when score limit is reached
     * a sheet of the keybindings used for the hotkeys
     * nice colors, fonts, and images!
+    
+## Packages used:
+* Cypress for feature testing
+* Start-server-and-test for combined server and test start script
+* Semantic-ui-css and semantic-ui-react for styling
 
 ## Plan for improvements next in line:
 * Refactor code, mainly in App.jsx
